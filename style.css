@@ -1,0 +1,536 @@
+/* ==================================================
+   GOOGLE FONT
+================================================== */
+
+@import url(
+    "https://fonts.googleapis.com/css?family=Anonymous+Pro"
+);
+
+
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==================================================
+   ROOT
+================================================== */
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+
+/* ==================================================
+   BODY
+================================================== */
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #080808;
+    color: white;
+
+    overflow-x: hidden;
+}
+
+
+/* ==================================================
+   LOADING SCREEN
+================================================== */
+
+#loading-screen {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #080808;
+
+    z-index: 9999;
+
+    opacity: 1;
+
+    transition:
+        opacity 0.8s ease;
+}
+
+
+/* ==================================================
+   LOADING CONTAINER
+================================================== */
+
+.loading-container {
+    width: min(350px, 80%);
+    text-align: center;
+}
+
+
+/* ==================================================
+   LOADING BAR
+================================================== */
+
+.loader {
+    width: 100%;
+    height: 12px;
+
+    border-radius: 20px;
+
+    border: 2px solid #514b82;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* ==================================================
+   LOADING BAR FILL
+================================================== */
+
+.loader::before {
+    content: "";
+
+    position: absolute;
+
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+
+    width: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #514b82,
+            #00ffff
+        );
+
+    animation:
+        loadingBar 3s linear forwards;
+}
+
+
+@keyframes loadingBar {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: calc(100% - 4px);
+    }
+
+}
+
+
+/* ==================================================
+   LOADING TEXT
+================================================== */
+
+.loading-text {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    color: #999;
+}
+
+
+/* ==================================================
+   WELCOME SCREEN
+================================================== */
+
+#welcome-screen {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #11152a 0%,
+            #080808 45%,
+            #030303 100%
+        );
+
+    text-align: center;
+
+    opacity: 0;
+
+    transition:
+        opacity 1s ease;
+
+    z-index: 9998;
+}
+
+
+/* ==================================================
+   WELCOME CONTAINER
+================================================== */
+
+.welcome-container {
+    width: 100%;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ==================================================
+   HELLO CONTAINER
+================================================== */
+
+.masking-container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ==================================================
+   HELLO TEXT
+================================================== */
+
+.masked-text {
+    font-size:
+        clamp(
+            80px,
+            12vw,
+            160px
+        );
+
+    font-weight: bold;
+
+    color: transparent;
+
+    background-image:
+        url(
+            "https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop"
+        );
+
+    background-size: 200%;
+
+    background-position: 0 50%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    opacity: 0;
+
+    animation:
+        hello-enter 1.2s ease forwards,
+        animate-background 5s infinite alternate linear;
+}
+
+
+@keyframes hello-enter {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    70% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes animate-background {
+
+    from {
+        background-position: 0 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+
+}
+
+
+/* ==================================================
+   TYPEWRITER
+================================================== */
+
+.typewriter-section {
+    display: none;
+
+    justify-content: center;
+
+    margin-top: 25px;
+}
+
+
+.cursor {
+    position: relative;
+
+    width: 0;
+
+    margin: 0 auto;
+
+    font-family:
+        "Anonymous Pro",
+        monospace;
+
+    font-size: 30px;
+
+    line-height: 1.4;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    border-right:
+        2px solid #00ffff;
+}
+
+
+/* ==================================================
+   FIRST TYPEWRITER
+================================================== */
+
+#typewriter-one .cursor {
+    border-right: 2px solid #00ffff;
+    animation: typewriter-one 2.5s steps(17) forwards;
+}
+
+@keyframes typewriter-one {
+    0% {
+        width: 0;
+    }
+    99% {
+        width: 17ch;
+        border-right-color: #00ffff;
+    }
+    100% {
+        width: 17ch;
+        border-right-color: transparent; /* Turns off the cursor permanently after typing */
+    }
+}
+
+
+/* ==================================================
+   SECOND TYPEWRITER
+================================================== */
+
+#typewriter-two .cursor {
+    animation:
+        typewriter-two 3.5s steps(31) forwards,
+        blink-cursor 0.8s step-end infinite;
+}
+
+
+@keyframes typewriter-two {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 31ch;
+    }
+
+}
+
+
+/* ==================================================
+   CURSOR
+================================================== */
+
+@keyframes blink-cursor {
+
+    0%,
+    100% {
+        border-color: #00ffff;
+    }
+
+    50% {
+        border-color: transparent;
+    }
+
+}
+
+
+/* ==================================================
+   ENTER BUTTON
+================================================== */
+
+#enter-btn {
+
+    display: none;
+
+    margin-top: 40px;
+
+    padding: 15px 35px;
+
+    border: 1px solid #514b82;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+    position: relative;
+
+    z-index: 10;
+
+    pointer-events: auto;
+}
+
+
+/* ==================================================
+   ENTER BUTTON SHOW
+================================================== */
+
+#enter-btn.show {
+
+    display: inline-block;
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* ==================================================
+   ENTER BUTTON HOVER
+================================================== */
+
+#enter-btn:hover {
+
+    background: #514b82;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(81, 75, 130, 0.4);
+}
+
+
+/* ==================================================
+   ENTER BUTTON FOCUS
+================================================== */
+
+#enter-btn:focus-visible {
+
+    outline: 2px solid #00ffff;
+
+    outline-offset: 5px;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+    .loading-container {
+        width: 80%;
+    }
+
+
+    .masked-text {
+        font-size:
+            clamp(
+                65px,
+                22vw,
+                110px
+            );
+    }
+
+
+    .cursor {
+        font-size: 19px;
+    }
+
+
+    #enter-btn {
+        padding:
+            13px 25px;
+
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+}
+
+
+/* ==================================================
+   REDUCED MOTION
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
